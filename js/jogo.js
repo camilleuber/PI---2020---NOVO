@@ -92,23 +92,26 @@ function colocaQuadrado(){
 	var quadrado = new Image();
     quadrado.src = "img/quadrado_boneco.png";
     contexto.drawImage(quadrado, quadrado_x, quadrado_y); 
-	
-	//contexto.fillStyle = "#8B3A62";
-	//contexto.fillRect(quadrado_x, quadrado_y, quadrado_largura, quadrado_altura);
 
 	document.onkeydown = function(event){
-    	switch(event.which){
 
-            case 38: // pra cima
-            	pular = true;
+		switch(event.which){
 
-            case 39: // pra direita
-                movimento_direita = true;
-                if(movimento_direita == true){
+			case 38: // pra cima
+
+				pular = true;
+
+			case 39: // pra direita
+
+				movimento_direita = true;
+
+				if(movimento_direita == true){
+
 					quadrado_x += 6;
+
 				}
-        }
-    }
+		}
+	}
 }
 
 function colocaPlataforma(){
@@ -139,11 +142,9 @@ function colocaPlataforma(){
 function colocaLava(){
 
 	var lava = new Image();
-    lava.src = "img/lava.png";
-    contexto.drawImage(lava, lava_x, lava_y); 
+	lava.src = "img/lava.png";
+	contexto.drawImage(lava, lava_x, lava_y); 
 
- 	//contexto.fillStyle = "#8B1A1A";
-	//contexto.fillRect(lava_x, lava_y, lava_largura, lava_altura);
 }
 
 function colocaLimite(){
@@ -151,23 +152,35 @@ function colocaLimite(){
 	if(quadrado_x + 40 >= canvas.width){ // limite na borda direita
 
 		document.onkeydown = function(event){
-    		switch(event.which){
-    			case 39:
-    				quadrado_x = quadrado_x + 10;
-    			case 37:
-    				quadrado_x = quadrado_x - 10;
-    		}
-    	}
+
+			switch(event.which){
+
+				case 39:
+
+					quadrado_x = quadrado_x + 10;
+
+				case 37:
+
+					quadrado_x = quadrado_x - 10;
+
+			}
+		}
 	}
 
 	if(quadrado_x <= 0){ // limite na borda esquerda
 
 		document.onkeydown = function(event){
+
 			switch(event.which){
+
 				case 37:
+
 					quadrado_x = quadrado_x - 10;
+
 				case 39: 
+
 					quadrado_x = quadrado_x + 10;
+
 			}
 		}
 	}
@@ -221,45 +234,44 @@ function colocaLimite(){
 function colocaMonstro(){
 
 	var monstro = new Image();
-    monstro.src = "img/monstro.png";
-    contexto.drawImage(monstro, monstro_x, monstro_y); 
+	monstro.src = "img/monstro.png";
+	contexto.drawImage(monstro, monstro_x, monstro_y); 
 
-    monstro_x -= 1;
+	monstro_x -= 1;
 
-    if(monstro_x <= 100){
+	if(monstro_x <= 100){
     	
-    	if(fase_dois == true){
+		if(fase_dois == true){
 
-    		monstro_x = 200;
+			monstro_x = 200;
 
-    	} else{
+		} else{
 
-    		monstro_x = 380;
+			monstro_x = 380;
 
-    	}
+		}
 
-    }
+	}
 
-    var monstro_dois = new Image();
-    monstro_dois.src = "img/monstro.png";
-    contexto.drawImage(monstro_dois, monstro_dois_x, monstro_dois_y); 
+	var monstro_dois = new Image();
+	monstro_dois.src = "img/monstro.png";
+	contexto.drawImage(monstro_dois, monstro_dois_x, monstro_dois_y); 
 
-    monstro_dois_x += 1;
+	monstro_dois_x += 1;
 
-    if(monstro_dois_x >= canvas.width - 100){
+	if(monstro_dois_x >= canvas.width - 100){
     	
-    	monstro_dois_x = 640;
+		monstro_dois_x = 640;
 
-    }
+	}
 
 }
 
 function colocaPorta(){
 
-
 	var porta = new Image();
-    porta.src = "img/porta.png";
-    contexto.drawImage(porta, porta_x, porta_y); 
+	porta.src = "img/porta.png";
+	contexto.drawImage(porta, porta_x, porta_y); 
 
 	if(quadrado_x >= porta_x - 43 && quadrado_x <= porta_x + 43){
 
@@ -275,7 +287,6 @@ function colocaPorta(){
 
 		colocaColisao();
 
-
 	}
 
 }
@@ -283,24 +294,24 @@ function colocaPorta(){
 function colocaVida(){
 
 	contexto.font = "20px OCR A Std, monospace";
-    contexto.fillStyle = "white";
-    contexto.fillText("vidas: "+vida, 40, 50);
+	contexto.fillStyle = "white";
+	contexto.fillText("vidas: "+vida, 40, 50);
 
 }
 
 function colocaCoracao(){
 
 	var coracao = new Image();
-    coracao.src = "img/vida.png";
-    contexto.drawImage(coracao, coracao_x, coracao_y); 
+	coracao.src = "img/vida.png";
+	contexto.drawImage(coracao, coracao_x, coracao_y); 
 
-    if(quadrado_x >= coracao_x - 30 && quadrado_y <= coracao_y + 30 && quadrado_x <= coracao_x + 30 && quadrado_y >= coracao_y - 30 || quadrado_y <= coracao_y - 30 && quadrado_y >= coracao_y + 30 && quadrado_x >= coracao_x - 30 && quadrado_x <= coracao_x + 30){
+	if(quadrado_x >= coracao_x - 30 && quadrado_y <= coracao_y + 30 && quadrado_x <= coracao_x + 30 && quadrado_y >= coracao_y - 30 || quadrado_y <= coracao_y - 30 && quadrado_y >= coracao_y + 30 && quadrado_x >= coracao_x - 30 && quadrado_x <= coracao_x + 30){
 
-    	coracao_x += 200;
-    	coracao_y = -100;
-    	vida++;
+		coracao_x += 200;
+		coracao_y = -100;
+		vida++;
 
-    }
+	}
 }
 
 function colocaColisao(){
@@ -330,8 +341,8 @@ function colocaColisao(){
 
 		if(quadrado_x >= monstro_x - 40 && quadrado_y >= monstro_y && quadrado_x <= monstro_x + 40 || quadrado_y >= monstro_y - 40 && quadrado_x >= monstro_x - 40 && quadrado_x <= monstro_x + 40){
 
-			quadrado_x = 50;
-			vida--;
+		quadrado_x = 50;
+		vida--;
 
 		}
 
@@ -360,10 +371,10 @@ function colocaColisao(){
 		if(gameOver == true){
 
 			var anuncio = new Image();
-    		anuncio.src = "img/gameover.jpg";
-    		contexto.drawImage(anuncio, 310, 160);
+			anuncio.src = "img/gameover.jpg";
+			contexto.drawImage(anuncio, 310, 160);
     	
-    	}
+		}
 
 		clearInterval(chamada);
 
@@ -384,8 +395,8 @@ var chamada = setInterval(function(){
 	if(fase_dois == true){
 
 		var lava_dois = new Image();
-    	lava_dois.src = "img/lava.png";
-    	contexto.drawImage(lava_dois, lava_dois_x, lava_dois_y); 
+		lava_dois.src = "img/lava.png";
+		contexto.drawImage(lava_dois, lava_dois_x, lava_dois_y); 
 
 	}
 
@@ -395,14 +406,14 @@ var chamada = setInterval(function(){
 	colocaColisao();
 
 	contexto.font = "20px OCR A Std, monospace";
-    contexto.fillStyle = "white";
-    contexto.fillText("fase "+fase, canvas.width - 130, 50);
+	contexto.fillStyle = "white";
+	contexto.fillText("fase "+fase, canvas.width - 130, 50);
 
 	if(pular){
 
 		aceleracao = -6;
 		pulando = true;
-    	pular = false;
+		pular = false;
 
 	}
 
@@ -411,7 +422,7 @@ var chamada = setInterval(function(){
 	if(aceleracao != 0 || pulando){
 
 		aceleracao = aceleracao + gravidade;
-		
+
 	}
 
 	contexto.font = "15px OCR A Std, monospace";
