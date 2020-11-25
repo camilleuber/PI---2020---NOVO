@@ -409,11 +409,13 @@ var chamada = setInterval(function(){
 	quadrado_y = quadrado_y + aceleracao;
 
 	if(aceleracao != 0 || pulando){
-        aceleracao = aceleracao + gravidade;
+
+		aceleracao = aceleracao + gravidade;
+		
 	}
 
 	contexto.font = "15px OCR A Std, monospace";
-    contexto.fillStyle = "#EE8262";
-    contexto.fillText("pi por camila e camille", 430, canvas.height - 15);
+	contexto.fillStyle = "#EE8262";
+	contexto.fillText("pi por camila e camille", 430, canvas.height - 15);
 
 }, 20);
