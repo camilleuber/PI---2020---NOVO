@@ -82,16 +82,16 @@ var lava_dois_y = 389;
 function colocaFundo(){
 
 	var fundo = new Image();
-    fundo.src = "img/fundo.jpg";
-    contexto.drawImage(fundo, 0, 0); 
+	fundo.src = "img/fundo.jpg";
+	contexto.drawImage(fundo, 0, 0); 
 
 }
 
 function colocaQuadrado(){
 
 	var quadrado = new Image();
-    quadrado.src = "img/quadrado_boneco.png";
-    contexto.drawImage(quadrado, quadrado_x, quadrado_y); 
+	quadrado.src = "img/quadrado_boneco.png";
+	contexto.drawImage(quadrado, quadrado_x, quadrado_y); 
 
 	document.onkeydown = function(event){
 
